@@ -1,0 +1,53 @@
+.home-styled {
+    width: 100vw; /* Cover the entire viewport width */
+    height: 100vh; /* Cover the entire viewport height */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .content {
+        // width: 950px;
+        // bottom: 0;
+
+        .grid {
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
+            // margin-top: 5%;
+            // gap: 10px;
+            // padding: 50px;
+            // bottom: 0;
+            background: var(--black-1);
+            width: 1090px;
+            height: 420px;
+            // position: relative;
+        }
+    }
+
+    .overlay {
+        position: fixed; /* Ensure it covers the entire viewport */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(119, 112, 112, 0.5); /* Semi-transparent black background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* High z-index to ensure it is above all content */
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // width: 100%;
+            // height: 100%;
+
+            // .fa-spinner {
+            //     height: 10%;
+            //     width: 10%;
+            // }
+        }
+    }
+}

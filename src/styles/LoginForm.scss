@@ -1,0 +1,225 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    /* font-family: 'Arial', sans-serif; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dee2e6;
+  }
+  
+  .login-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* width: 90%; */
+    width: 500px;
+  }
+  
+  .login-container {
+    display: flex;
+    background: #000;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 500px;
+  }
+  
+  .login-left {
+    flex: 1;
+    background: var(--gradient);
+    border-radius: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-illustration {
+    max-width: 100%;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .login-right1 {
+    flex: 1;
+    background: linear-gradient(90deg, #cecef3, #c7c6c6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4%;
+    padding-top: 13%;
+    padding-bottom: 13%;
+  }
+  
+  .login-right {
+    flex: 1;
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 5px; */
+    border-radius: 10px 10px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    /* margin-bottom: 10px; */
+  }
+  
+  .sign-in-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* max-width: 300px; */
+  }
+  
+  .user-icon {
+    width: 80px;
+    height: 80px;
+    /* margin-bottom: 10px; */
+  }
+  
+  h2 {
+    font-size: 24px;
+    /* margin-bottom: 20px; */
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input-icon {
+    display: flex;
+    align-items: center;
+    background: #E6E6FA;
+    border-radius: 5px;
+    padding: 5px 10px;
+    
+  }
+  
+  .input-icon input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: none;
+    color: rgb(10, 10, 10);
+    padding: 8px;
+    border-radius: 5px;
+    border-color: #E6E6FA;
+    
+  }
+  
+  .input-icon input::placeholder {
+    color: #121111;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #E6E6FA;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .login-button:hover {
+    background-color: #cbcbf7;
+  }
+  
+  .forgot-password {
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #080808;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  .signup-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .signup-button {
+    background: none;
+    border: none;
+    color: #051324;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
+  .signup-button:hover {
+    text-decoration: underline;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .login-left, .login-right1 {
+      border-radius: 10px 10px 0 0;
+    }
+  
+    .login-left, .login-right1 {
+      flex: none;
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .login-right {
+      border-radius: 0 0 10px 10px;
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .login-background {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .sign-in-container {
+      max-width: 100%;
+    }
+  
+    .input-icon {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .input-icon input {
+      width: 100%;
+      margin-top: 5px;
+    }
+  
+    .login-button {
+      font-size: 14px;
+    }
+  }
