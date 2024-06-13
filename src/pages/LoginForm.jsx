@@ -47,7 +47,7 @@ function LoginForm({ onLogin }) {
               <img src={groupImage} alt="User Icon" className="user-icon" />
               <form >
                   <div className="input-group">
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="username">Email</label>
                   <div className="input-icon">
                       <FontAwesomeIcon icon={faUser} />
                       <input type="text" id="username" name="username" placeholder="Username" 
