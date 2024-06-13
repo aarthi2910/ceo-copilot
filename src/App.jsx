@@ -8,29 +8,33 @@ import './pages/LoginForm.css';
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const handleLogin = (email, password) => {
-        if ((email == "") & (password == "")) {
+    const handleLogin = async (event) => {
+        event.preventDefault(); 
+        if (email === "" || password === "") {
             return;
-        } else {
-            fetch('http://localhost:8000/user/login', {
+        }
+        try {
+            const response = await fetch('http://localhost:8000/user/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ email, password })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.token, "response.data.token");
-                if (data.token) {
-                    setToken(data.token);
-                    setIsLoggedIn(true);
-                }
-            })
-            .catch(error => {
-                alert('Invalid credentials');
-                console.error('Error:', error);
-            });  
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data.token, "response.data.token");
+
+            if (data.token) {
+                setToken(data.token);
+                setIsLoggedIn(true);
+            } else {
+                throw new Error('Invalid token received');
+            }
+        } catch (error) {
+            alert('Invalid credentials');
         }
     };
 
