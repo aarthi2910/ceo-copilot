@@ -11,13 +11,25 @@ function LoginForm({ onLogin }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (username === 'admin' && password === 'password') {
-      onLogin(username, password);
-      setError('');
+  const login = () => {
+    if ((username == "") & (password == "")) {
+      return;
     } else {
-      setError('Invalid credentials');
+      axios
+        .post("http://localhost:8000/user/login", {
+          username: username,
+          password: password,
+        })
+        .then(function (response) {
+          console.log(response.data.token, "response.data.token");
+          if (response.data.token) {
+            setToken(response.data.token);
+            navigate("/home.jsx");
+          }
+        })
+        .catch(function (error) {
+          console.log(error, "error");
+        });
     }
   };
 
@@ -52,7 +64,7 @@ function LoginForm({ onLogin }) {
                       onChange={(e) => setPassword(e.target.value)}/>
                   </div>
                   </div>
-                  <button type="submit" className="login-button">LOGIN</button>
+                  <button className="login-button" onClick={login}>LOGIN</button>
               </form>
               <button className="forgot-password">Forgot Password?</button>
               <div className="signup-container">
