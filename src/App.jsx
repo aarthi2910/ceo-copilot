@@ -8,13 +8,29 @@ import './pages/LoginForm.css';
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const handleLogin = (username, password) => {
-        if (username === 'admin' && password === 'password') {
-            setIsLoggedIn(true);
+    const handleLogin = (email, password) => {
+        if ((email == "") & (password == "")) {
+            return;
         } else {
-            alert('Invalid credentials');
-        }
+            axios
+              .post("http://localhost:8000/user/login", {
+                email: email,
+                password: password,
+              })
+              .then(function (response) {
+                console.log(response.data.token, "response.data.token");
+                if (response.data.token) {
+                  setToken(response.data.token);
+                  setIsLoggedIn(true);
+                }
+              })
+              .catch(function (error) {
+                alert('Invalid credentials');
+                console.log(error, "error");
+              });
+          }
     };
+
 
     return (
         <div className="App">

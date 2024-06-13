@@ -7,17 +7,17 @@ import groupImage from '../assets/Group.jpg';
 import '../styles/LoginForm.scss';
 
 function LoginForm({ onLogin }) { 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const login = () => {
-    if ((username == "") & (password == "")) {
+    if ((email == "") & (password == "")) {
       return;
     } else {
       axios
         .post("http://localhost:8000/user/login", {
-          username: username,
+          email: email,
           password: password,
         })
         .then(function (response) {
@@ -47,12 +47,12 @@ function LoginForm({ onLogin }) {
               <img src={groupImage} alt="User Icon" className="user-icon" />
               <form >
                   <div className="input-group">
-                  <label htmlFor="username">Email</label>
+                  <label htmlFor="email">Email</label>
                   <div className="input-icon">
                       <FontAwesomeIcon icon={faUser} />
-                      <input type="text" id="username" name="username" placeholder="Username" 
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}/>
+                      <input type="text" id="email" name="email" placeholder="email" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}/>
                   </div>
                   </div>
                   <div className="input-group">
