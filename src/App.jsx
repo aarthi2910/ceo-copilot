@@ -12,23 +12,26 @@ function App() {
         if ((email == "") & (password == "")) {
             return;
         } else {
-            axios
-              .post("http://localhost:8000/user/login", {
-                email: email,
-                password: password,
-              })
-              .then(function (response) {
-                console.log(response.data.token, "response.data.token");
-                if (response.data.token) {
-                  setToken(response.data.token);
-                  setIsLoggedIn(true);
+            fetch('http://localhost:8000/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.token, "response.data.token");
+                if (data.token) {
+                    setToken(data.token);
+                    setIsLoggedIn(true);
                 }
-              })
-              .catch(function (error) {
+            })
+            .catch(error => {
                 alert('Invalid credentials');
-                console.log(error, "error");
-              });
-          }
+                console.error('Error:', error);
+            });  
+        }
     };
 
 

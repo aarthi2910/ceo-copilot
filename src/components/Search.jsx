@@ -41,11 +41,11 @@ const Search = ({ handleSearchSubmit }) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                handleSearchSubmit(false); // Stop loading
+                handleSearchSubmit(false); 
             })
             .catch((error) => {
                 console.error('Error:', error);
-                handleSearchSubmit(false); // Stop loading
+                handleSearchSubmit(false); 
             });
         }, 2000);
     };

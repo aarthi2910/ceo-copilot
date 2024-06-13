@@ -8,30 +8,35 @@ import '../styles/LoginForm.scss';
 
 function LoginForm({ onLogin }) { 
     const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-  const login = () => {
-    if ((email == "") & (password == "")) {
-      return;
-    } else {
-      axios
-        .post("http://localhost:8000/user/login", {
-          email: email,
-          password: password,
+    const login = () => {
+        if ((email == "") & (password == "")) {
+            return;
+        } else {
+            fetch('http://localhost:8000/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
         })
-        .then(function (response) {
-          console.log(response.data.token, "response.data.token");
-          if (response.data.token) {
-            setToken(response.data.token);
-            navigate("/home.jsx");
-          }
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.token, "response.data.token");
+            if (data.token) {
+                setToken(data.token);
+                navigate("/home.jsx");
+            }
         })
-        .catch(function (error) {
-          console.log(error, "error");
+        .catch(error => {
+            alert('Invalid credentials');
+            console.error('Error:', error);
         });
-    }
-  };
+
+        }
+    };
 
   return (
     <div className="login-background">
