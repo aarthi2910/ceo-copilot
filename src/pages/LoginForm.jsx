@@ -45,7 +45,7 @@ function LoginForm({ onLogin }) {
             {error && <div className="error">{error}</div>}
             <div className="sign-in-container">
               <img src={groupImage} alt="User Icon" className="user-icon" />
-              <form onSubmit={handleSubmit}>
+              <form >
                   <div className="input-group">
                   <label htmlFor="username">Username</label>
                   <div className="input-icon">
